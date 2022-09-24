@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<graphics.h>
+void main()
+{
+  int gdriver=DETECT,gmode,errorcode;
+  int midx,midy,radius=100;
+  initgraph(&gdriver,&gmode,"c:\\turboc3\\bgi");
+  errorcode=graphresult();
+  if(errorcode!=grOk)
+  {
+    printf("graphics error :%s\n",grapherrormsg(errorcode));
+    printf("press any key to halt");
+    getch();
+    exit(1);
+  }
+    midx=getmaxx()/2;
+    midy=getmaxy()/2;
+    setcolor(14);
+    circle(midx,midy,radius);
+    setfillstyle(1,14);
+    floodfill(midx,midy,14);
+    setcolor(0);
+   line(midx,midy,midx+15,midy+15);
+   line(midx,midy,midx-15,midy+15);
+   line(midx+15,midy+15,midx-15,midy+15);
+   setfillstyle(1,0); floodfill(midx,midy+7,0);
+   setcolor(0);
+    circle(midx-40,midy-40,15);
+    setfillstyle(1,0);
+    floodfill(midx-40,midy-40,0);
+     circle(midx+40,midy-40,15);
+     setfillstyle(1,0);
+     floodfill(midx+40,midy-40,0);
+     setfillstyle(1,0);
+   pieslice(midx,midy+40,180,360,45);
+   getch();
+   closegraph();
+
+}
